@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Templates</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>Binding Dynamic Content</h2>
+      <p>So let's say you have the following template:</p>
+      <pre><code> &lt;span>&lt;span id=”record-line”>&lt;/span>&lt;/span> </code></pre>
+      <p>which we transform with the following selector:</p>
+      <pre><code> "#record-line" #> List("one ", "two ", "three ") </code></pre>
+      <p>
+        Resulting in:
+        <div data-lift="Dynamic.renderList">
+          <span><span id="record-line"></span></span>
+        </div>
+      </p>
+      <p>
+        Rendering the same template with an empty list (or empty box, or None) would result in:
+        <div data-lift="Dynamic.renderEmptyList">
+          <span><span id="record-line"></span></span>
+        </div>
+        Exactly- very little content. The resulting template looks like this:
+      </p>
+      <pre><code> &lt;span>&lt;/span> </code></pre>
+      <p>
+        Now, what would it look like if you bind not to the element "record-line" itself but to its children. Let's see:
+      </p>
+      <pre><code> "#record-line *" #> List("one ", "two ", "three ") </code></pre>
+      <p>
+        See the '*' in "#record-line *"? That tells the selector to use the children of the selected element, not the element itself.
+        And the result would be:
+        <div data-lift="Dynamic.renderListToChildren">
+          <span><span id="record-line"></span></span>
+        </div>
+        The content looks the same, the template however is different:
+      </p>
+      <pre><code> &lt;span>&lt;span id="record-line">one &lt;/span>&lt;span>two &lt;/span>&lt;span>three &lt;/span>&lt;/span> </code></pre>
+
+      <p>
+        Now let's use NodeSeq => NodeSeq function on the right side of the selector. Let's assume this template:
+      </p>
+      <pre><code>
+    &lt;table>
+      &lt;tr class="expense-row">
+        &lt;td class="date">YYYY/MM/DD&lt;/td>
+        &lt;td class="desc">Description&lt;/td>
+      &lt;/tr>
+    &lt;/table>
+      </code></pre>
+      <p>
+        Here's our CSS selector:
+      </p>
+      <pre><code>
+    ".row *" #> (".date *" #> getExpenseDate &amp;
+                 ".desc *" #> getExpenseDesc)
+       </code></pre>
+
+      <div data-lift="Dynamic.renderTableOneRow">
+        <table>
+          <tr class="expense-row">
+            <td class="date">YYYY/MM/DD</td>
+            <td class="desc">Description</td>
+          </tr>
+          <tr class="clearable">
+            <td class="date">Date 2</td>
+            <td class="desc">Description 2</td>
+          </tr>
+          <tr class="clearable">
+            <td class="date">Date 3</td>
+            <td class="desc">Description 3</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>
+        And binding the same template to two snippets with <code>Dynamic.renderTableTwoRows</code> results in:
+      </p>
+      <div data-lift="Dynamic.renderTableTwoRows">
+        <table>
+          <tr class="expense-row">
+            <td class="date">YYYY/MM/DD</td>
+            <td class="desc">Description</td>
+          </tr>
+        </table>
+      </div>
+
+      <p>And now we use a proper mapping as seen in <code>Dynamic.renderTableWithMap</code></p>
+      <div data-lift="Dynamic.renderTableWithMap">
+        <table>
+          <tr class="expense-row">
+            <td class="date">YYYY/MM/DD</td>
+            <td class="desc">Description</td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+

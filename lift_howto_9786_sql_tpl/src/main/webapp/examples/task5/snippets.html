@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Templates</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>Using Lift Snippets</h2>
+      <p>Snippets are Lift's way to connect backend functionality to the shown pages in the browser.</p>
+      <p>Snippets are looked up in the sub package <code>snippet</code> of one of the packages that you added in Boot.
+        So for instance, if you added <code>code</code> as your source package, then <code>snippet</code> is expected to be a child
+        package of <code>code</code>.
+      </p>
+      <p>
+        A snippet is invoked by referencing the class or object name and optionally a method name within that class or object.
+        If no method name is given, Lift tries to call a method <code>render</code>. To invoke a snippet, you write its
+        name and the method inside the <code>class</code> attribute, or inside the <code>data-lift</code> attribute.
+      </p>
+      <pre><code>The current time is &lt;span class="l:TimeSnippet.currentTime"&gt;HH:mm:ss&lt;/span&gt;</code></pre>
+      <p>
+        The current time is <span class="l:TimeSnippet.currentTime current-time">HH:mm:ss</span>
+      </p>
+      <pre><code>The current time is &lt;span data-lift="TimeSnippet"&gt;HH:mm:ss&lt;/span&gt;</code></pre>
+      <p>
+        The current time is <span data-lift="TimeSnippet" class="current-time">HH:mm:ss</span>
+      </p>
+      <p>
+        You can also uses classes for snippets. Lift will then create a new instance for every HTTP request. Within that request
+        Lift will make sure that always the same instance is used when rendering your pages. The next examples snippet binding
+        contains a random number that should be fresh every request but within that request and subsequent ajax requests it will stay the same.
+      </p>
+      <p data-lift="TimeSnippetClass">So, let's use the class snippet number <span class="random-number">0</span> once: <span class="current-time">HH:mm:ss</span></p>
+      <p data-lift="TimeSnippetClass">and a second time with the same number <span class="random-number">0</span> again: <span class="current-time">HH:mm:ss</span></p>
+
+      <p>The difference is that class snippets are instantiated per request. That means class instance variables are thread safe.</p>
+      <p>
+        On the other hand using objects only creates one singleton instance which is the same for all requests. So, never put
+        values inside an object that contain request related data, like the current user's password for instance. If you need to store
+        request related data inside objects or want to make it available to other snippets, use RequestVar or SessionVar:
+      </p>
+      <p data-lift="VarExample">The RequestVar value <span class="request-var">0</span> changes with each request
+        while the SessionVar value <span class="session-var">0</span> changes only after logout.
+      </p>
+
+    </div>
+
+  </body>
+</html>
+

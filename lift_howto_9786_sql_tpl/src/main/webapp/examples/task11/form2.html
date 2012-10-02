@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Forms</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>A simple Lift form</h2>
+      <p>Let's see how we can create a simple Lift form:</p>
+      <pre><code>
+
+        &lt;form data-lift="SimpleLiftForm?form=post">
+          &lt;p>
+            &lt;label for="animal">Animal:&lt;/label>&lt;br>
+            &lt;input id="animal" name="animal">
+          &lt;/p>
+          &lt;p>
+            &lt;label for="legs">Legs:&lt;/label>&lt;br>
+            &lt;input id="legs" name="legs">
+          &lt;/p>
+            &lt;button type="submit">Submit&lt;/button>
+         &lt;/form>
+
+      </code></pre>
+      <p>
+        Resulting in:
+      </p>
+        <div>
+          <form data-lift="SimpleLiftForm?form=post">
+            <p>
+              <label for="animal">Animal:</label><br>
+              <input id="animal" name="animal">
+            </p>
+            <p>
+              <label for="legs">Legs:</label><br>
+              <input id="legs" name="legs">
+            </p>
+            <button type="submit">Submit</button>
+         </form>
+       </div>
+
+
+    </div>
+
+  </body>
+</html>
+

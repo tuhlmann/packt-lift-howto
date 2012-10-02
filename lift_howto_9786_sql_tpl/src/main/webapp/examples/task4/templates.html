@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Templates</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>Designer Friendly Templates</h2>
+      <p>This page demonstrates some things you can do with Lift's template mechanism.</p>
+      <p>First of all, a template is a valid XHTML or HTML5 document that can be viewed in a browser. In the <code>body</code> tag,
+         you specify the start of your template content:
+         <pre><code>&lt;body class="lift:content_id=main"&gt;</code></pre>
+      </p>
+      <p>
+        A template can be surrounded with a parent template, which in turn can also be surrounded. That gives you a
+        great way to to build a hierarchical set of templates with common parts all in one place. You do this with the line:
+        <pre><code>&lt;div id="main" class="lift:surround?with=default;at=content"&gt;</code></pre>
+        The <code>with</code> attribute specifies the name of the parent template. Templates are found below the
+        "templates-hidden" directory.
+        In the parent template you just need to define the ID ("content" in this case) of the element that will receive the content.
+      </p>
+      <p>
+        You can also embed another template by using the <code>embed</code> tag:
+        <pre><code>&lt;div class="l:embed?what=/examples/templates/awesome"&gt;&lt;/div&gt;</code></pre>
+        The path to the template is relative to "templates-hidden".
+      </p>
+
+      <div class="l:embed?what=/examples/templates/awesome"></div>
+      <p>
+        We can also include a snippet programmatically. This may look a bit artificial right now. That's because it is :)
+        It's a constructed use case, but still, programmatic access to templates has valid reasons.
+      </p>
+      <p>
+        So here we define a snippet <code>EmbedTemplate</code> and we give it a parameter <code>what</code> that points
+        to the file to embed. Basically, we reimplement a simple version of the <code>embed</code> snippet.
+      </p>
+      <pre><code>&lt;div class="l:EmbedTemplate?what=/examples/templates/awesome"&gt;&lt;/div&gt;</code></pre>
+      <div class="l:EmbedTemplate?what=/examples/templates/awesome"></div>
+
+    </div>
+
+  </body>
+</html>
+

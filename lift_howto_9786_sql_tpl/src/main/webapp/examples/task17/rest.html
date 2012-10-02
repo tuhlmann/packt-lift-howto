@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Home</title>
+  </head>
+  <body class="lift:content_id=main">
+    <div id="main" class="lift:surround?with=default;at=content">
+
+<head_merge>
+
+  <script>
+    $(document).ready(function(){
+      $('#btn-rest-example1').click(function() {
+        $.get('/api/user/list', function(data) {
+          $('#text-rest-example1').val(JSON.stringify(data, undefined, 2));
+        });
+      });
+
+      $('#btn-rest-example2').click(function() {
+        var userId = $('#in-rest-example2').val();
+        var url = '/api/user/list/'+userId;
+        $.get(url, function(data) {
+          var result = "URL: " + url + ':\n\n' + JSON.stringify(data, undefined, 2)
+          $('#text-rest-example1').val(result);
+        });
+      });
+    });
+  </script>
+
+</head_merge>
+
+      <h2>Test Your REST API</h2>
+
+      <p>
+        This page let's you test the REST API we build in to manipulate the list of users.
+        The API will receive and return JSON data as this is very easy to provide on the server side and also to
+        parse on the client side. Another option would be XML which we omit here.
+        The API is also only accessible when you are logged in- we are using Lift's session support to check that.
+        Another option would be to use the stateless API and use OAuth for authentication of your requests.
+      </p>
+
+      <p>
+        Let's use jQuerys Ajax methods to call the REST API and simply output the result in a text field:
+      </p>
+      <textarea id="text-rest-example1">
+Replaced by content from:
+http://localhost:8080/api/user/list
+      </textarea>
+
+      <p>
+      <button id="btn-rest-example1">Retrieve User List</button>
+      </p>
+
+      <p style="clear: both">&nbsp;</p>
+
+      <h3>Search by ID</h3>
+      <p>In the field below enter the ID of a user (they start with 1), if the user is found its data is shown in the textfield above.</p>
+
+      <p>http://localhost:8080/api/user/list/ <input id="in-rest-example2" type="text"></p>
+      <p><button id="btn-rest-example2">Find User</button></p>
+
+      <p style="clear: both">&nbsp;</p>
+
+
+    </div>
+  </body>
+</html>

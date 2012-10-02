@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Home of Users</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+
+      <div data-lift="PostingUser.listUsers">
+
+        <a href="#" class="back-to-users">&lt;-- Back</a>
+        <h2>This is a user page</h2>
+        <ul>
+          <li><a href="#">Post: </a></li>
+        </ul>
+      </div>
+      <div class="post-area" data-lift="PostingUser.postForm?form=post">
+        <span>Title:</span><br>
+        <input name="post-title"><br>
+        <span>Text:</span><br>
+        <textarea name="post-text"></textarea><br>
+        <button name="submit" type="submit">Submit</button>
+      </div>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Templates</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>Ajax Examples</h2>
+      <p>Lift provides awesome, terribly easy to use Ajax- once you understand the way Lift deals with it.</p>
+      <p>Here's a minimal example:</p>
+
+      <pre><code>&lt;button id="ajax_example1" data-lift="AjaxExamples.example1">Click Me&lt;/button></code></pre>
+
+      <p>
+        results in:
+      </p>
+      <p>
+        <span id="ajax_example1" data-lift="AjaxExamples.example1">Click Me</span>
+      </p>
+
+      <div style="clear:both"></div>
+
+      <p>&nbsp;</p>
+      <p>
+        Let's look at a slightly more complex example.<br>
+        Let's build a simple Ajax form to enter a value and then let's add this value to a list
+        here on the page:
+      </p>
+      <pre><code>
+&lt;form data-lift="form.ajax">
+  &lt;div data-lift="AjaxExamples.example2">
+    &lt;p>
+      &lt;label for="name">Your Name:&lt;/label>&lt;br>
+      &lt;input id="name" name="name">
+    &lt;/p>&lt;p>
+      &lt;label for="city">Your City:&lt;/label>&lt;br>
+      &lt;input id="city" name="city">
+    &lt;/p>
+    &lt;button type="submit">Submit&lt;/button>
+  &lt;/div>
+&lt;/form></code></pre>
+
+      <p class="box">Name sent to the server: <span id="ajax_example2_name"></span></p>
+
+      <form data-lift="form.ajax">
+        <div data-lift="AjaxExamples.example2">
+          <p>
+            <label for="name">Your Name:</label><br>
+            <input id="name" name="name">
+          </p>
+          <p>
+            <label for="city">Your City:</label><br>
+            <input id="city" name="city">
+          </p>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+
+      <div style="clear:both"></div>
+      <p>&nbsp;</p>
+      <div class="box">
+        <p>The result List:</p>
+        <ul id="ajax_example2_list"></ul>
+
+
+      </div>
+
+
+    </div>
+
+  </body>
+</html>
+

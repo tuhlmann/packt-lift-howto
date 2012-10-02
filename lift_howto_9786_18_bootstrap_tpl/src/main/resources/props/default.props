@@ -1,0 +1,10 @@
+mail.charset = UTF-8
+mail.smtp.port = 25
+mail.smtp.auth = true
+mail.smtp.host=smtp.example.com
+mail.smtp.user=email_user_name
+mail.smtp.pass=password
+
+mongo.default.host = 127.0.0.1
+mongo.default.port = 27017
+mongo.default.name = lift-bootstrap

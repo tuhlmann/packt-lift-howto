@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+    <title>Templates</title>
+  </head>
+  <body class="lift:content_id=main">
+
+    <div id="main" class="lift:surround?with=default;at=content">
+      <h2>CSS Selectors</h2>
+      <p>
+        This page shows a few examples of CSS selectors. Not everything is shown here, we try to concentrate on the
+        most widely used cases to limit the confusion.
+      </p>
+      <pre><code>&lt;span data-lift="Selectors.userName">&lt;span id="user-name">User Name Here&lt;/span>&lt;/span></code></pre>
+      becomes:
+      <code><span data-lift="Selectors.userName"><span id="user-name">User Name Here</span></span></code>
+      <pre><code>
+        &lt;div class="expense">Item 1&lt;/div>
+        &lt;div class="expense">Item 2&lt;/div>
+        &lt;div class="expense">Item 3&lt;/div>
+      </code></pre>
+      Let's user <code>Selectors.addExpenseClass</code> to add a class to all elements with class "expense":
+      <pre data-lift="Selectors.addExpenseClass"><code>
+        &lt;div class="expense my-extra-class">Item 1&lt;/div>
+        &lt;div class="expense my-extra-class">Item 2&lt;/div>
+        &lt;div class="expense my-extra-class">Item 3&lt;/div>
+      </code></pre>
+      <div data-lift="Selectors.addExpenseClass"><code>
+        <div class="expense">Item 1</div>
+        <div class="expense">Item 2</div>
+        <div class="expense">Item 3</div>
+      </code></div>
+      <p>&nbsp;</p>
+      <p>
+        Now let's add a link to an anchor tag:
+      </p>
+      <pre><code>
+        &lt;a id="user-link" href="#">&lt;span class="user-name">User Name Here&lt;/span>&lt;/a>
+      </code></pre>
+      <div data-lift="Selectors.userLink">
+        <a class="user-link" href="#"><span class="user-name">User Name Here</span></a>
+      </div>
+      <p>
+        Here's a little Ajax spice:
+      </p>
+      <pre><code>&lt;button class="user-action" type="button">Click Here&lt;/button></code></pre>
+      adding the snippet <code>Selectors.ajaxSpice</code> creates this
+      <p style="clear:both;"></p>
+      <span data-lift="Selectors.ajaxSpice">
+        <button class="user-action" type="button">Click Here</button>
+      </span>
+
+    </div>
+
+  </body>
+</html>
+
