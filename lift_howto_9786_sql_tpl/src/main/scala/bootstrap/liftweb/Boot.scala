@@ -19,13 +19,6 @@ import code.lib.UserRest
 
 case class DocumentInfo(docId: String)
 
-object BootHelpers {
-
-  // A Loc function making sure only logged in users see the menu item
-  val loggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/user_mgt/login"))
-
-}
-
 /**
  * A class that's instantiated early and run.  It allows the application
  * to modify lift's environment
@@ -129,3 +122,12 @@ class Boot {
 
   }
 }
+
+object BootHelpers {
+
+  // A Loc function making sure only logged in users see the menu item
+  val loggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/user_mgt/login"))
+
+}
+
+

@@ -29,7 +29,7 @@ object AjaxExamples {
       AppendHtml("ajax_example2_list", html) & FadeIn(id, 0 second, 1 second)
     }
 
-    "@name" #> ajaxText(name, s => {name = s; JqSetHtml("ajax_example2_name", Text(name))}) &
+    "@name" #> ajaxText(name, s => {name = s; SetHtml("ajax_example2_name", Text(name))}) &
     "@city" #> (text(city, city = _) ++ hidden(process))
   }
 

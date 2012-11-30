@@ -17,14 +17,6 @@ import com.mongodb.MongoOptions
 import com.mongodb.Mongo
 import com.mongodb.DBAddress
 
-object BootHelpers {
-
-  // A Loc function making sure only logged in users see the menu item
-  val loggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/user_mgt/login"))
-
-}
-
-
 /**
  * A class that's instantiated early and run.  It allows the application
  * to modify lift's environment
@@ -107,5 +99,12 @@ class Boot {
       println("MongoDB inited: %s".format(defaultDbAddress.toString))
    }
 
+
+}
+
+object BootHelpers {
+
+  // A Loc function making sure only logged in users see the menu item
+  val loggedIn = If(() => User.loggedIn_?, () => RedirectResponse("/user_mgt/login"))
 
 }

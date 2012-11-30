@@ -25,6 +25,8 @@ object MainUserPostsPage {
 
 class PostingUser(user: User) {
 
+  lazy val loc = User.listUsersMenu.toLoc
+
   def listUsers = {
     ".back-to-users [href]" #> MainUserPostsPage.menu.loc.calcDefaultHref &
     "li *" #> UserPost.findAll(By(UserPost.userId, user.id.is)).map(post =>

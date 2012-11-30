@@ -23,7 +23,7 @@ class ChatBrowserComponent extends CometActor with CometListener {
 
   // listen for messages
   override def lowPriority = {
-    case m: Message => msgs :+= m; partialUpdate(appendMessage(m) & scrollToBottom)
+    case m: Message => msgs :+= m; partialUpdate(appendMessage(m) & ScrollToBottom())
     case all: Vector[Message] =>  msgs = all; println("Received ALL Messages"); reRender()
   }
 
@@ -37,14 +37,16 @@ class ChatBrowserComponent extends CometActor with CometListener {
    */
   def render = {
 	println("CALLING RENDER")
-    Script(SetHtml("chat-msg-tbody", msgs.flatMap(buildMessageHtml)) & scrollToBottom)
+    Script(SetHtml("chat-msg-tbody", msgs.flatMap(buildMessageHtml)) & ScrollToBottom())
   }
 
   /*
    * Scroll down to make the last message visible
+   * Its an example how you can easily create your own JsCmds to encapsulate often used
+   * functionality.
    */
-  def scrollToBottom() = {
-    Run("$('#chat-msg-content').animate({scrollTop:$('#chat-msg-content')[0].scrollHeight}, 1000);")
+  case class ScrollToBottom extends JsCmd {
+    def toJsCmd = "$('#chat-msg-content').animate({scrollTop:$('#chat-msg-content')[0].scrollHeight}, 1000);"
   }
 
 }
