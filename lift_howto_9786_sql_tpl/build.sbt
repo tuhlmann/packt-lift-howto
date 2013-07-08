@@ -17,7 +17,7 @@ resolvers += "Sonatype scala-tools repo" at "https://oss.sonatype.org/content/gr
 resolvers += "Sonatype scala-tools snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 libraryDependencies ++= {
-    val liftVersion = "2.5-SNAPSHOT"
+    val liftVersion = "2.5"
     Seq(
       "net.liftweb" %% "lift-webkit" % liftVersion % "compile",
       "net.liftweb" %% "lift-mapper" % liftVersion % "compile"
