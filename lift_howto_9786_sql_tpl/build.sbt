@@ -36,7 +36,7 @@ libraryDependencies ++= Seq(
 )
 
 // If using JRebel uncomment next line
-scanDirectories := Nil
+// scanDirectories := Nil
 
 // Remove Java directories, otherwise sbteclipse generates them
 unmanagedSourceDirectories in Compile <<= (scalaSource in Compile)(Seq(_))
